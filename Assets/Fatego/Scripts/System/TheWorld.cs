@@ -24,12 +24,22 @@ namespace TheWorld {
     public class CPlayer: CUnit{
         public CInfo Info;                 //信息
         public GameObject Model;    //游戏对象
+        public int UserID;              //玩家ID
 
+
+        public override void Run()
+        {
+            base.Run();
+            if (UserID != 0) {
+                //AI操作
+            }
+        }
     }
 
 
     public struct OperateData
     {
+        public int ID;
         public int Operate;  //操作
         public int Data;
     }
@@ -37,12 +47,13 @@ namespace TheWorld {
     public struct MoveData
     {
         public int ID;
-        public CVector3 Position;  //方向
+        public CVector3 Rotate;  //方向
 
     }
 
     public class TheWorld {
-        public List<CUnit> m_UnitList;         //单位列表
+        public List<CUnit> m_UnitList;          //单位列表
+        public List<CUnit> TempUnitList;         //单位列表
 
 
         public void Init() {
@@ -100,8 +111,17 @@ namespace TheWorld {
 
         }
 
-        public void Save()
-        {
+        //创造
+        public void Create(Zero zero) {
+
+        }
+
+        //毁灭
+        public void Destroy(Zero zero){
+
+        }
+
+        public void Save(){
             foreach (CUnit unit in m_UnitList)
             {
                 unit.Save();
@@ -109,16 +129,17 @@ namespace TheWorld {
         }
 
         //操作
-        public void Operate(int ID, OperateData data)
+        public void Operate(OperateData data)
         {
-            CPlayer unit = (CPlayer)m_UnitList[ID];
-            
+            CPlayer unit = (CPlayer)m_UnitList[data.ID];
+            unit.Operate(data);
         }
 
         //移动
         public void Move(MoveData data)
         {
-
+            CPlayer unit = (CPlayer)m_UnitList[data.ID];
+            unit.Move(data);
         }
 
 

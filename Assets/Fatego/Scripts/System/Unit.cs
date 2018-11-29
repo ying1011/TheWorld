@@ -3,8 +3,31 @@ using System.Collections.Generic;
 using UnityEngine;
 using Skill;
 using Item;
+using TheWorld;
+
+    /*
+     *  unitType
+     *  1人物
+     *  2材料
+     *  
+     *
+     *
+     *
+     *
+     *
+     *
+     *
+     *
+     *
+     *
+     *
+     */
+
+
 namespace Unit
 {
+
+
     public class CBaseAttribute{
         //基础属性
         public float HP;             //血
@@ -44,6 +67,7 @@ namespace Unit
         public int Type;            //类型
         public int Team;            //队伍
         public string Name;         //
+
     }
 
     public class CUnit: Zero
@@ -94,7 +118,12 @@ namespace Unit
             base.Run();
         }
 
-        public virtual void Operate(int id, int id2)
+        public virtual void Operate(OperateData data)
+        {
+
+        }
+
+        public virtual void Move(MoveData data)
         {
 
         }
