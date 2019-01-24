@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TurnBaseOne;
 using Unit;
-
+using TheWorld;
 
 public struct UserData {
     public int level;       //等级
@@ -30,8 +30,10 @@ public class GlobalGameData {
 
     public BattleData       m_BattleData;   //战斗数据
 
+
     GlobalGameData() {
         InitUserData();
+
         m_SceneData.m_UnitList = new List<CUnit>();
         m_BattleData.m_UnitList = new List<CUnit>();
 
@@ -46,7 +48,7 @@ public class GlobalGameData {
     }
 
     void InitUserData() {
-        m_UserData.GetHashCode();
+     
         if(PlayerPrefs.HasKey(""))
         m_UserData.name = PlayerPrefs.GetString("UserData.name");
         m_UserData.level = PlayerPrefs.GetInt("UserData.level");

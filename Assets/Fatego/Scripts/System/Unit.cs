@@ -34,6 +34,12 @@ namespace Unit
         public float MaxHP;          //血
         public float MP;             //蓝
         public float MaxMP;          //蓝
+        public CBaseAttribute() {
+            HP      = 100;
+            MaxHP = 100;
+            MP = 100;
+            MaxMP = 100;
+        }
     }
 
     public class CUnitAttribute: CBaseAttribute {
@@ -61,35 +67,68 @@ namespace Unit
         public float CRI;  //必杀/暴击
         public float CTR;  //反击
         public float CHR;  //魅力
+
+        public CUnitAttribute() {
+            STR = 100;
+            AGL = 100;
+            INT = 100;
+            CON = 100;
+            ATK = 100;
+            DEF = 100;
+            SPD = 100;
+            LCK = 100;
+            DEX = 100;
+            VIT = 100;
+            WIS = 100;
+            MGA = 100;
+            RCV = 100;
+            HIT = 100;
+            AVD = 100;
+            CRI = 100;
+            CTR = 100;
+            CHR = 100;
+        }
     }
 
     public class CUnitBaseInfo {
         public int Type;            //类型
         public int Team;            //队伍
         public string Name;         //
+        public int State;           //状态
+        public CUnitBaseInfo() {
+            Type = 0;
+            Team = 0;
+            Name = "";
+            State = 0;
+        }
 
     }
 
     public class CUnit: Zero
     {
+        public int Id;              //id
+
         public CUnitAttribute m_BaseAttribute;
         public CUnitAttribute m_AddAttribute;
         public CUnitAttribute m_CurAttribute;
 
-        public int Id;              //id
         public CUnitBaseInfo BaseInfo;
 
         public List<CSkill> SkillList;    //技能列表
         public List<CItem> Backpack;      //背包
 
-        public int[] m_Status;
-        public int m_State;
+        public List<int> Status;          //持续状态
 
         public CUnit()
         {
             m_BaseAttribute = new CUnitAttribute();
             m_AddAttribute = new CUnitAttribute();
             m_CurAttribute = new CUnitAttribute();
+            Status = new List<int>();
+            SkillList = new List<CSkill>();
+            Backpack = new List<CItem>();
+            BaseInfo = new CUnitBaseInfo();
+            Id = 0;
         }
 
         ~CUnit() { }
@@ -111,32 +150,6 @@ namespace Unit
             Attribute.DEF = l.DEF + r.DEF;
 
             return Attribute;
-        }
-
-        public override void Run()
-        {
-            base.Run();
-        }
-
-        public virtual void Operate(OperateData data)
-        {
-
-        }
-
-        public virtual void Move(MoveData data)
-        {
-
-        }
-
-        public virtual void Update()
-        {
-            UpdateCurAttribute();
-        }
-
-        public override Zero Create()
-        {
-            Zero z = new CUnit();
-            return z;
         }
         
     }

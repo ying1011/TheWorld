@@ -57,7 +57,6 @@ namespace TurnBaseOne {
                 case State.RUN:
                     {
                         foreach (CUnit unit in m_UnitList){
-                            unit.Update();
                             unit.Run();
                         }
                         CheckOperate();

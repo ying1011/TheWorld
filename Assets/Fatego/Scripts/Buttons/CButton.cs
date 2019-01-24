@@ -15,7 +15,7 @@ public class CButton : MonoBehaviour {
 
     public void ChangeScene()
     {
-        SceneManager.LoadScene(1);
+        //SceneManager.LoadScene(1);
         //Debug.Log("name = " + PlayerPrefs.GetString("name"));
 
         PlayerPrefs.SetString("UserData.name", "tom");
